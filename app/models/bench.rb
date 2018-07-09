@@ -19,7 +19,7 @@ class Bench < ApplicationRecord
     north_south_match = Bench.where({lat: lat_range})
     matches = north_south_match.where({lng: lng_range})
     matches
-    # debugger
+    #
     # sql = "select * from benches where lat < #{bounds["northEast"]["lat"]} and lat > #{bounds["southWest"]["lat"]} and lng < #{bounds["northEast"]["lng"]} and lng > #{bounds["southWest"]["lng"]};"
     # match_arr = ActiveRecord::Base.connection.execute(sql)
     # return match_arr

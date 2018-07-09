@@ -2,7 +2,6 @@ export default class MarkerManager {
   constructor(map) {
     this.map = map;
     this.markers = {};
-    debugger
   }
 
   componentDidMount() {
@@ -17,7 +16,7 @@ export default class MarkerManager {
     newMarkers.forEach( (marker) => {
       this.createMarker(marker);
     });
-  }
 
+  }
 
 }

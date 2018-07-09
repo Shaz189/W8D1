@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BenchIndex);
+export default connect(mapStateToProps, null)(BenchIndex);
