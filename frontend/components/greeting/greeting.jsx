@@ -2,17 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Greeting = (props) => {
-  let sessionLink;
-  if (props.currentUser) {
-    sessionLink = (<Link to="/login">Login</Link>);
-  } else {
-    sessionLink = (<Link to="/signup">Sign Up</Link>);
-  }
-  return (
-    <div className="greeting-container">
-      {sessionLink}
-    </div>
+  const sessionLinks = () => (
+    <nav className="login-signup">
+      <Link to="/login">Login</Link><br/>
+      <Link to="/signup">Sign up!</Link>
+    </nav>
   );
+  const personalGreeting = () => (
+    <hgroup className="header-group">
+      <h2 className="header-name">Greetings {props.currentUser.username}!</h2>
+      <button className="header-button" onClick={props.logout}>Log Out</button>
+    </hgroup>
+  );
+  return props.currentUser ? personalGreeting() : sessionLinks();
 };
+
 
 export default Greeting;
