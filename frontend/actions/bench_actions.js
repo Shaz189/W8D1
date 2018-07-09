@@ -16,9 +16,9 @@ export const receiveBenchErrors = (err) => {
   };
 };
 
-export const fetchBenches = () => {
+export const fetchBenches = (filters) => {
   return dispatch => {
-    return BenchApiUtil.fetchBenches().then(
+    return BenchApiUtil.fetchBenches(filters).then(
       (benches) => dispatch(receiveAllBenches(benches))
     );
   };

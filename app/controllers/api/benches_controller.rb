@@ -3,6 +3,7 @@ class Api::BenchesController < ApplicationController
     @benches = Bench.in_bounds(params[:bounds])
     render :index
   end
+
 end
 
 # 37.790319
