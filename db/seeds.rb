@@ -10,6 +10,8 @@ require 'faker'
 #   User.create(username: Faker::Name.name, password: 'password')
 # end
 
-5.times do
-  Bench.create(description: Faker::HitchhikersGuideToTheGalaxy.location, lat: rand(0.000000..180.000000), lng: rand(0.000000..180.000000) )
-end
+# 5.times do
+#   Bench.create(description: Faker::HitchhikersGuideToTheGalaxy.location, lat: rand(0.000000..180.000000), lng: rand(0.000000..180.000000) )
+# end
+
+Bench.create(description: "test bench", lat: 37.790319, lng: 122.404441)

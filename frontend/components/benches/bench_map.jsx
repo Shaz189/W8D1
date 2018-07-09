@@ -1,24 +1,42 @@
 import React from 'react';
+import MarkerManager from '../../util/marker_manager';
 
 class BenchMap extends React.Component {
 
   componentDidMount() {
-    debugger
-  // set the map to show SF
-  const mapOptions = {
-    center: { lat: 37.7758, lng: -122.435 }, // this is SF
-    zoom: 13
-  };
 
-  // wrap the mapDOMNode in a Google Map
-  this.map = new google.maps.Map(this.mapNode, mapOptions);
-}
+  // set the map to show SF
+    const mapOptions = {
+      center: { lat: 37.7758, lng: -122.435 }, // this is SF
+      zoom: 13
+    };
+
+    // wrap the mapDOMNode in a Google Map
+    this.map = new google.maps.Map(this.mapNode, mapOptions);
+    this.MarkerManager = new MarkerManager(this.map);
+    this.props.fetchBenches();
+  }
+
+  componentWillReceiveProps(newProps) {
+    debugger
+    const newMarkers = newProps.benches.map((bench) => {
+      let myLatLng = {lat: bench.lat, lng: bench.lng};
+      return  {
+        position: myLatLng,
+        map: this.MarkerManager.map,
+        title: bench.description,
+        id: bench.id
+      };
+    });
+    this.MarkerManager.updateMarkers(newMarkers);
+    debugger
+  }
 
 
   render () {
     return (
       <div id="map-container" ref='map'>
-        <div ref={ map => this.mapNode = map }> </div>
+        <div id="map-component" ref={ map => this.mapNode = map }> </div>
       </div>
     );
   }

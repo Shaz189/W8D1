@@ -7,10 +7,9 @@ class Search extends React.Component {
     this.props.fetchBenches();
   }
   render () {
-    debugger
     return (
       <div>
-        <BenchMap />
+        <BenchMap benches={this.props.benches} fetchBenches={this.props.fetchBenches}/>
         <BenchIndex benches={this.props.benches} fetchBenches={this.props.fetchBenches}/>
       </div>
     );
